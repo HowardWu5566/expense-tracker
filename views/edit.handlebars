@@ -1,0 +1,58 @@
+<div class="container col-4 my-5">
+  <form action="/expenses/{{expense._id}}?_method=PUT" method="POST">
+    <div class="mb-3 row">
+      <span class="col-3">*必填欄位</span>
+      <h4 class="col-9" style="text-align:center">請修改你的支出</h4>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="name" class="form-label col-3">
+        <h4>名稱*：</h4>
+      </label>
+      <div class="col-9">
+        <input type="text" class="form-control" id="name" name="name" placeholder="如：捷運" value="{{expense.name}}"
+          aria-describedby="name">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="date" class="form-label col-3">
+        <h4>日期*：</h4>
+      </label>
+      <div class="col-9">
+        <input type="date" class="form-control" id="date" name="date" value="{{expense.date}}" aria-describedby="date">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="category" class="form-label col-3">
+        <h4>類別*：</h4>
+      </label>
+      <div class="col-9">
+        <select class="form-control" id="category-dropdown" name="category" value="{{expense.caregory}}"
+          aria-label="select-by-category">
+          <option value="All">請選擇類別</option>
+          {{#each categoryArr}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="amount" class="form-label col-3">
+        <h4>金額*：</h4>
+      </label>
+      <div class="col-9">
+        <input type="number" class="form-control" data-bs-toggle="collapse" data-bs-target="#location-collapse"
+          id="amount" name="amount" placeholder="如：120" autocomplete="off" value="{{expense.amount}}"
+          aria-describedby="amount">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <button type="submit" class="btn btn-outline-primary form-control">送出</button>
+      </div>
+    </div>
+
+  </form>
+</div>
