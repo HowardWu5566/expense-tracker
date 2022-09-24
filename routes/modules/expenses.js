@@ -1,6 +1,7 @@
 const express = require('express')
-const Expense = require('../../models/expense')
 const router = express.Router()
+const Expense = require('../../models/expense')
+
 
 router.get('/new', (req, res) => {
   const categoryArr = Object.keys(require('../../utils/categoryList'))
@@ -19,6 +20,20 @@ router.get('/:id/edit', (req, res) => {
   return Expense.findById(id)
     .lean()
     .then(expense => res.render('edit', { expense, categoryArr }))
+    .catch(error => console.log(error))
+})
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+  return Expense.findById(id)
+    // .lean()
+    .then(expense => {
+      expense.name = req.body.name
+      expense.date = req.body.date
+      expense.category = req.body.category
+      expense.amount = req.body.amount
+      return expense.save()
+    })
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
