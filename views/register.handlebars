@@ -1,0 +1,58 @@
+<div class="container col-4 my-5">
+  <form action="/users/register" method="POST">
+    <div class="mb-3 row">
+      <span class="col-3">*必填欄位</span>
+      <h4 class="col-9" style="text-align:center"> 註冊 </h4>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="name" class="form-label col-3 p-0">
+        <h5>名稱：</h5>
+      </label>
+      <div class="col-9">
+        <input type="text" class="form-control" id="name" name="name" placeholder="如：野原廣志" aria-describedby="name">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="email" class="form-label col-3 p-0">
+        <h5>信箱：*</h5>
+      </label>
+      <div class="col-9">
+        <input type="email" class="form-control" id="email" name="email" placeholder="如：user1@example.com"
+          aria-describedby="email">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="password" class="form-label col-3 p-0">
+        <h5>密碼：*</h5>
+      </label>
+      <div class="col-9">
+        <input type="password" class="form-control" id="password" name="password" placeholder="請輸入密碼"
+          aria-describedby="password">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="confirmPassword" class="form-label col-3 p-0">
+        <h5>確認密碼：*</h5>
+      </label>
+      <div class="col-9">
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再次輸入密碼"
+          aria-describedby="confirmPassword">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <button type="submit" class="btn btn-outline-primary form-control">送出</button>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <div class="col-3"></div>
+      <div class="col-9 d-flex" style="justify-content:end">
+        <a href="/users/login">已有帳號？登入</a>
+      </div>
+    </div>
+
+  </form>
+</div>

@@ -38,9 +38,9 @@
     <div class="col-1 d-flex" style="align-items:center; justify-content:end">
       <a href="/expenses/{{this._id}}/edit" type="button" class="btn btn-outline-primary">修改</a>
     </div>
-    <div class="col d-flex" style="align-items:center">
-      <h5>刪除</h5>
-    </div>
+    <form action="/expenses/{{ this._id }}?_method=DELETE" method="POST" class="col d-flex" style="align-items:center">
+      <button type="submit" class="btn btn-outline-danger">刪除</button>
+    </form>
   </div>
   {{/each}}
 
