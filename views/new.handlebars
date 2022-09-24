@@ -28,9 +28,9 @@
       <div class="col-9">
         <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
           <option value="All">請選擇類別</option>
-          <option value="All">1</option>
-          <option value="All">2</option>
-          <option value="All">3</option>
+          {{#each categoryArr}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
         </select>
       </div>
     </div>

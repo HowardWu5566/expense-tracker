@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const recordSchema = new Schema({
-
+const expenseSchema = new Schema({
   name: {
     type: String,
     required: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   amount: {
@@ -24,4 +23,4 @@ const recordSchema = new Schema({
   },
 })
 
-module.exports = mongoose.model('Record', recordSchema)
+module.exports = mongoose.model('Expense', expenseSchema)

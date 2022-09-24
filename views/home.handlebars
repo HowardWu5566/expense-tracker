@@ -2,88 +2,50 @@
   <div class="row justify-content-center">
     <div class="col-6 btn-group">
       <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
-        <option value="All">類別</option>
-        <option value="All">Action</option>
-        <option value="All">Action</option>
-        <option value="All">Action</option>
+        <option value="">請選擇類別</option>
+        {{#each categoryArr}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
       </select>
     </div>
   </div>
+
   <div class="row justify-content-center mt-3">
     <div class="col-6">
       <h5 class="m-0">總金額：</h5>
     </div>
   </div>
+
   <div class="row justify-content-center">
     <div class="col-6">
       <h1 style="text-align:center">88888</h1>
     </div>
   </div>
 
+  {{#each expenses}}
   <div class="row mt-3">
     <div class="col-3"></div>
     <div class="col-1 d-flex" style="align-items:center">
-      <i class="fa-solid fa-house fa-2x"></i>
+      <i class="{{this.categoryIcon}} fa-2x"></i>
     </div>
     <div class="col-4">
-      <h5 class="m-0">午餐</h5>
-      <p class="m-0 date">2019/04/23</p>
+      <h5 class="m-0">{{this.name}}</h5>
+      <p class="m-0 date">{{this.date}}</p>
     </div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <h5>60</h5>
+    <div class="col-1 d-flex" style="align-items:center; justify-content:end">
+      <h5>{{this.amount}}</h5>
     </div>
-    <div class="col-1 d-flex" style="align-items:center">
+    <div class="col-1 d-flex" style="align-items:center; justify-content:end">
       <h5>修改</h5>
     </div>
     <div class="col d-flex" style="align-items:center">
       <h5>刪除</h5>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col-3"></div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <i class="fa-solid fa-house fa-2x"></i>
-    </div>
-    <div class="col-4">
-      <h5 class="m-0">午餐</h5>
-      <p class="m-0 date">2019/04/23</p>
-    </div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <h5>60</h5>
-    </div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <h5>修改</h5>
-    </div>
-    <div class="col d-flex" style="align-items:center">
-      <h5>刪除</h5>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-3"></div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <i class="fa-solid fa-house fa-2x"></i>
-    </div>
-    <div class="col-4">
-      <h5 class="m-0">午餐</h5>
-      <p class="m-0 date">2019/04/23</p>
-    </div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <h5>60</h5>
-    </div>
-    <div class="col-1 d-flex" style="align-items:center">
-      <h5>修改</h5>
-    </div>
-    <div class="col d-flex" style="align-items:center">
-      <h5>刪除</h5>
-    </div>
-  </div>
+  {{/each}}
 
   <div class="row justify-content-center mt-5">
     <a href="/expenses/new" type="button" class="btn btn-outline-success col-2">新增支出</a>
-    {{!-- <button type="button" class="btn btn-outline-success col-2">新增支出</button> --}}
   </div>
-
-
-
 
 </div>

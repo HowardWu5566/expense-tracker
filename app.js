@@ -10,6 +10,7 @@ const PORT = process.env.PORT
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
 
 app.use(routes)
 
