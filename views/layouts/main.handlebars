@@ -16,7 +16,11 @@
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a href="/" class="navbar-brand">家庭記帳本</a>
-      <button class="btn btn-outline-danger" type="button">登出</button>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-danger">登出</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-danger">登入</a>
+      {{/if}}
     </div>
   </nav>
 
