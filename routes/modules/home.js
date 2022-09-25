@@ -4,7 +4,8 @@ const router = express.Router()
 const Expense = require('../../models/expense')
 
 router.get('/', (req, res) => {
-  Expense.find()
+  const userId = req.user._id
+  Expense.find({ userId })
     .lean()
     .sort({ date: 1 })
     .then(expenses => {
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
       )
       res.render('home', { expenses, categoryArr })
     })
+    .catch(error => console.log(error))
 })
 
 module.exports = router
