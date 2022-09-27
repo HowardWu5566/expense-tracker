@@ -1,16 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const Expense = require('../../models/expense')
+const Category = require('../../models/category')
+const categoryList = require('../../models/seeds/category.json')
 
 
 router.get('/new', (req, res) => {
-  const categoryArr = Object.keys(require('../../utils/categoryList'))
-  res.render('new', { categoryArr })
+  // const categoryArr = Object.keys(require('../../utils/categoryList'))
+  res.render('new', { categoryList })
 })
 
 router.post('/', (req, res) => {
-  req.body.userId = req.user._id
-  return Expense.create(req.body)
+  Category.findOne({ name: req.body.category })
+    .lean()
+    .then(category => {
+      req.body.userId = req.user._id
+      req.body.categoryId = category._id
+      Expense.create(req.body)
+    })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -18,10 +25,10 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const categoryArr = Object.keys(require('../../utils/categoryList'))
+  // const categoryArr = Object.keys(require('../../utils/categoryList'))
   return Expense.findOne({ _id, userId })
     .lean()
-    .then(expense => res.render('edit', { expense, categoryArr }))
+    .then(expense => res.render('edit', { expense, categoryList }))
     .catch(error => console.log(error))
 })
 router.put('/:id', (req, res) => {

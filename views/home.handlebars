@@ -3,8 +3,8 @@
     <div class="col-6 btn-group">
       <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
         <option value="">請選擇類別</option>
-        {{#each categoryArr}}
-        <option value="{{this}}">{{this}}</option>
+        {{#each categoryList}}
+        <option value="{{this.name}}">{{this.name}}</option>
         {{/each}}
       </select>
     </div>
@@ -26,7 +26,7 @@
   <div class="row mt-3">
     <div class="col-3"></div>
     <div class="col-1 d-flex" style="align-items:center">
-      <i class="{{this.categoryIcon}} fa-2x"></i>
+      <i class="{{this.categoryId.icon}} fa-2x"></i>
     </div>
     <div class="col-4">
       <h5 class="m-0">{{this.name}}</h5>

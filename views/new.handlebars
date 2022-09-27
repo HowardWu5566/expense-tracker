@@ -28,8 +28,8 @@
       <div class="col-9">
         <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
           <option value="All">請選擇類別</option>
-          {{#each categoryArr}}
-          <option value="{{this}}">{{this}}</option>
+          {{#each categoryList}}
+          <option value="{{this.name}}">{{this.name}}</option>
           {{/each}}
         </select>
       </div>
