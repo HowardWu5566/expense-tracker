@@ -10,7 +10,10 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ date: 1 })
     .then(expenses => {
-      console.log(expenses)
+      let totalAmount = 0
+      expenses.forEach(expense => {
+        totalAmount += expense.amount
+      })
       res.render('home', { expenses, categoryList, totalAmount })
     })
     .catch(error => console.log(error))
