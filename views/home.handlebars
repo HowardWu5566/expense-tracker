@@ -1,13 +1,14 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-6 btn-group">
-      <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
-        <option value="">請選擇類別</option>
+    <form action="/" method="GET" class="col-6 btn-group">
+      <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category"
+        onchange="submit()">
+        <option value="All" {{#ifMatch 'All' categoryName}}selected{{/ifMatch}}>請選擇類別</option>
         {{#each categoryList}}
-        <option value="{{this.name}}">{{this.name}}</option>
+        <option value="{{this.name}}" {{#ifMatch this.name ../categoryName}}selected{{/ifMatch}}>{{this.name}}</option>
         {{/each}}
       </select>
-    </div>
+    </form>
   </div>
 
   <div class="row justify-content-center mt-3">

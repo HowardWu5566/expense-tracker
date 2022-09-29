@@ -5,12 +5,13 @@ const methodOverride = require('method-override')
 const usePassport = require('./config/passport')
 require('dotenv').config()
 require('./config/mongoose')
+const handlebarsHelpers = require('./utils/dropdownValue')
 const routes = require('./routes')
 
 const app = express()
 const PORT = process.env.PORT
 
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main', helpers: handlebarsHelpers }))
 app.set('view engine', 'handlebars')
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   res.locals.user = req.user
   next()
 })
+
 app.use(routes)
 
 app.listen(PORT, () => {

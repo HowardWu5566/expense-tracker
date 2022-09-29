@@ -6,7 +6,6 @@ const categoryList = require('../../models/seeds/category.json')
 
 
 router.get('/new', (req, res) => {
-  // const categoryArr = Object.keys(require('../../utils/categoryList'))
   res.render('new', { categoryList })
 })
 
@@ -25,7 +24,6 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  // const categoryArr = Object.keys(require('../../utils/categoryList'))
   return Expense.findOne({ _id, userId })
     .lean()
     .then(expense => res.render('edit', { expense, categoryList }))
