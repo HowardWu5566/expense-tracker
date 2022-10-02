@@ -1,0 +1,38 @@
+[
+  {
+    "name": "午餐",
+    "date": "2022-09-30",
+    "amount": "100",
+    "categoryId": "餐飲食品"
+  },
+  {
+    "name": "加油",
+    "date": "2022-09-30",
+    "amount": "1500",
+    "categoryId": "交通出行"
+  },
+  {
+    "name": "洗衣精",
+    "date": "2022-09-30",
+    "amount": "250",
+    "categoryId": "家居物業"
+  },
+  {
+    "name": "文具",
+    "date": "2022-09-30",
+    "amount": "70",
+    "categoryId": "其他"
+  },
+  {
+    "name": "飲料",
+    "date": "2022-09-30",
+    "amount": "50",
+    "categoryId": "餐飲食品"
+  },
+  {
+    "name": "動感超人玩具",
+    "date": "2022-09-30",
+    "amount": "500",
+    "categoryId": "休閒娛樂"
+  }
+]

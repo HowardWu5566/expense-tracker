@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Expense = require('../../models/expense')
+const Record = require('../../models/record')
 const Category = require('../../models/category')
 const categoryList = require('../../models/seeds/category.json')
 
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     .then(category => {
       req.body.userId = req.user._id
       req.body.categoryId = category._id
-      Expense.create(req.body)
+      Record.create(req.body)
     })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Expense.findOne({ _id, userId })
+  return Record.findOne({ _id, userId })
     .lean()
     .then(expense => res.render('edit', { expense, categoryList }))
     .catch(error => console.log(error))
@@ -32,7 +32,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Expense.findOne({ _id, userId })
+  return Record.findOne({ _id, userId })
     .then(expense => {
       expense.name = req.body.name
       expense.date = req.body.date
@@ -46,7 +46,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  return Expense.findById(id)
+  return Record.findById(id)
     .then(expense => expense.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

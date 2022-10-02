@@ -1,13 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const Expense = require('../../models/expense')
+const Record = require('../../models/record')
 const categoryList = require('../../models/seeds/category.json')
 
 router.get('/', (req, res) => {
   const userId = req.user._id
   const categoryName = req.query.category
-  // console.log(req.query)
-  Expense.find({ userId })
+  Record.find({ userId })
     .populate('categoryId')
     .lean()
     .sort({ date: 1 })
