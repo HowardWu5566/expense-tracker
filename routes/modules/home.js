@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
       }
       // 計算總費用及修改日期格式
       let totalAmount = 0
-      expenses.forEach(expense => {
+      expenses.forEach((expense, index) => {
+        if (index % 2 === 0) expense.background = true
         totalAmount += expense.amount
         expense.date = dayjs(expense.date).format('YYYY/MM/DD')
       })
