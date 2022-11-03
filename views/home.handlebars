@@ -43,7 +43,8 @@
       </div>
       <form action="/expenses/{{ this._id }}?_method=DELETE" method="POST" class="col d-flex"
         style="align-items:center">
-        <button type="submit" class="btn btn-outline-danger">刪除</button>
+        <button type="submit" class="btn btn-outline-danger"
+          onclick="return confirm(`確定刪除 {{ this.name }} {{this.amount}} 元 ？`)">刪除</button>
       </form>
     </div>
     {{/each}}
