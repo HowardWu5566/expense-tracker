@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const dayjs = require('dayjs')
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 const categoryList = require('../../models/seeds/category.json')
-
 
 router.get('/new', (req, res) => {
   res.render('new', { categoryList })
@@ -29,7 +29,8 @@ router.get('/:id/edit', (req, res) => {
     Category.find().lean().sort(_id)
   ])
     .then(([expense, categories]) => {
-      res.render('edit', { expense, categories })
+      expense.date = dayjs(expense.date).format('YYYY-MM-DD')
+      return res.render('edit', { expense, categories })
     })
     .catch(error => console.log(error))
 })
