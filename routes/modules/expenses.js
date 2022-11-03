@@ -24,9 +24,13 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Record.findOne({ _id, userId })
-    .lean()
-    .then(expense => res.render('edit', { expense, categoryList }))
+  return Promise.all([
+    Record.findOne({ _id, userId }).lean(),
+    Category.find().lean().sort(_id)
+  ])
+    .then(([expense, categories]) => {
+      res.render('edit', { expense, categories })
+    })
     .catch(error => console.log(error))
 })
 router.put('/:id', (req, res) => {

@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 const usePassport = require('./config/passport')
 require('dotenv').config()
 require('./config/mongoose')
-const handlebarsHelpers = require('./utils/dropdownValue')
+const handlebarsHelpers = require('./utils/handlebars-helper')
 const routes = require('./routes')
 
 const app = express()

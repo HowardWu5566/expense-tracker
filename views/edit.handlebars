@@ -27,11 +27,12 @@
         <h4>類別*：</h4>
       </label>
       <div class="col-9">
-        <select class="form-control" id="category-dropdown" name="category" value="{{expense.category}}"
-          aria-label="select-by-category">
+        <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category">
           <option value="All">請選擇類別</option>
-          {{#each categoryList}}
-          <option value="{{this.name}}">{{this.name}}</option>
+          {{#each categories}}
+          <option value="{{this._id}}" {{#ifMatch this._id ../expense.categoryId}}selected{{/ifMatch}}>
+            {{this.name}}
+          </option>
           {{/each}}
         </select>
       </div>

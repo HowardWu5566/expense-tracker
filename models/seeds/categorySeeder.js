@@ -6,6 +6,7 @@ db.once('open', () => {
   Category.create(categoryList)
     .then(() => {
       console.log('Categories are created.')
-      process.exit()
+      return process.exit()
     })
+    .catch(error => console.log(error))
 })
