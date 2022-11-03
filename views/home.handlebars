@@ -1,15 +1,32 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <form action="/" method="GET" class="col-6 btn-group">
-      <select class="form-control" id="category-dropdown" name="category" aria-label="select-by-category"
-        onchange="submit()">
-        <option value="All" {{#ifMatch 'All' categoryName}}selected{{/ifMatch}}>請選擇類別</option>
-        {{#each categoryList}}
-        <option value="{{this.name}}" {{#ifMatch this.name ../categoryName}}selected{{/ifMatch}}>{{this.name}}</option>
-        {{/each}}
-      </select>
-    </form>
-  </div>
+  {{!-- 篩選列 --}}
+  <form action="/" method="GET" class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
+    <div class="col-12">
+      <div class="form-check">
+        <label for="category-dropdown">類別：</label>
+        <select class="form-select" id="category-dropdown" name="category" aria-label="select-by-category">
+          <option value="All" {{#ifMatch 'All' category}}selected{{/ifMatch}}>請選擇類別</option>
+          {{#each categoryList}}
+          <option value="{{this.name}}" {{#ifMatch this.name ../category}}selected{{/ifMatch}}>{{this.name}}
+          </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="startDate">日期從：</label>
+      <input type="date" class="form-control" value="{{startDate}}" id="startDate" name="startDate"
+        aria-describedby="startDate">
+    </div>
+    <div class="col-12">
+      <label for="endDate">到：</label>
+      <input type="date" class="form-control" value="{{endDate}}" id="endDate" name="endDate"
+        aria-describedby="endDate">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-outline-success">篩選</button>
+    </div>
+  </form>
   {{!-- 總金額 --}}
   <div class="row justify-content-center mt-3">
     <div class="col-6">
@@ -49,7 +66,7 @@
     </div>
     {{/each}}
   </div>
-
+  {{!-- 新增按鈕 --}}
   <div class="row justify-content-center mt-5">
     <a href="/expenses/new" type="button" class="btn btn-outline-success col-2">新增支出</a>
   </div>
