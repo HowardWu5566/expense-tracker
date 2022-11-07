@@ -5,7 +5,7 @@
       <div class="form-check">
         <label for="category-dropdown">類別：</label>
         <select class="form-select" id="category-dropdown" name="category" aria-label="select-by-category">
-          <option value="All" {{#ifMatch 'All' category}}selected{{/ifMatch}}>請選擇類別</option>
+          <option value="All" {{#ifMatch 'All' category}}selected{{/ifMatch}}>所有類別</option>
           {{#each categoryList}}
           <option value="{{this.name}}" {{#ifMatch this.name ../category}}selected{{/ifMatch}}>{{this.name}}
           </option>
@@ -15,18 +15,19 @@
     </div>
     <div class="col-12">
       <label for="startDate">日期從：</label>
-      <input type="date" class="form-control" value="{{startDate}}" id="startDate" name="startDate"
-        aria-describedby="startDate">
+      <input type="date" class="form-control" value="{{startDate}}" max="2299-12-31" min="1900-01-01" id="startDate"
+        name="startDate" aria-describedby="startDate">
     </div>
     <div class="col-12">
       <label for="endDate">到：</label>
-      <input type="date" class="form-control" value="{{endDate}}" id="endDate" name="endDate"
-        aria-describedby="endDate">
+      <input type="date" class="form-control" value="{{endDate}}" max="2299-12-31" min="1900-01-01" id="endDate"
+        name="endDate" aria-describedby="endDate">
     </div>
     <div class="col-12">
       <button type="submit" class="btn btn-outline-success">篩選</button>
     </div>
   </form>
+  {{> messages}}
   {{!-- 總金額 --}}
   <div class="row justify-content-center mt-3">
     <div class="col-6">
